@@ -1,0 +1,7 @@
+---
+- name: Deinstall graphical interface 
+  include_tasks: gui_none.yml
+  when:
+    - enviroment is defined
+    - enviroment.gui_system is defined
+    - not enviroment.gui_system
