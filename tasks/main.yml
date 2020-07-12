@@ -1,7 +1,11 @@
 ---
-- name: Deinstall graphical interface 
-  include_tasks: gui_none.yml
-  when:
-    - enviroment is defined
-    - enviroment.gui_system is defined
-    - not enviroment.gui_system
+- name: Create /srv directory
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: 0755
+  become: yes
+  with_items:
+   - '/srv'
